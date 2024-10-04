@@ -1,35 +1,35 @@
 import { auth } from "./firebase.js";
 //Autenticación
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 import { showMessage } from "./toastMessage.js";
 
-const signUpForm = document.querySelector("#signup-form");
+const signInForm = document.querySelector("#signin-form");
 
-signUpForm.addEventListener("submit", async (e) => {
+signInForm.addEventListener("submit", async (e) => {
   //Evitar que se recargue la pagina
   e.preventDefault();
   console.log("Formulario enviado");
 
   //Obtenemos los datos del formulario mediante sus id
-  const email = signUpForm["signup-email"].value;
-  const password = signUpForm["signup-password"].value;
+  const email = signInForm["signin-email"].value;
+  const password = signInForm["signin-password"].value;
   //Manejo de errores
   try {
-    const userCredentials = await createUserWithEmailAndPassword(
+    const userCredentials = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
     //Mostrar mensaje de exito
-    showMessage("Usuario registrado", "success");
+    showMessage("Sesión iniciada", "success");
 
     //Cerrar el modal
-    const signupModal = document.querySelector("#signup-modal");
-    const modal = bootstrap.Modal.getInstance(signupModal);
+    const signinModal = document.querySelector("#signin-modal");
+    const modal = bootstrap.Modal.getInstance(signinModal);
     modal.hide();
 
     //Limpiamos el formulario
-    signUpForm.reset();
+    signInForm.reset();
   } catch (error) {
     //Registro fallido
     console.log(error);

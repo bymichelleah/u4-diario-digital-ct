@@ -39,34 +39,36 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
+              <li class="nav-item logged-out">
                 <a
-                  class="nav-link logged-out"
+                  class="nav-link"
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#signin-modal"
                   >Iniciar Sesión</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item logged-out">
                 <a
-                  class="nav-link logged-out"
+                  class="nav-link"
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#signup-modal"
                   >Registrarse</a
                 >
               </li>
-              <li class="nav-item">
-                <a class="nav-link logged-in" id="logout" href="#"
-                  >Cerrar Sesión</a
-                >
+              <li class="nav-item logged-in">
+                <a class="nav-link" id="logout" href="#">Cerrar Sesión</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
+
+    <main id="main-container" class="p-4">
+      <p id="saludo">asjkhdaskjhdajk</p>
+    </main>
 
     <!--Modallll Inicio de sesion-->
 
@@ -78,7 +80,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content bg-dark text-light">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
               Iniciar sesion
@@ -90,21 +92,46 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-body">
+            <!---->
+            <form id="signin-form">
+              <div class="mb-3">
+                <label for="signin-email" class="form-label">Correo</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="example@correo.com"
+                  id="signin-email"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="signin-password" class="form-label"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="•••••••••"
+                  id="signin-password"
+                />
+              </div>
+
+              <div>
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  value="Iniciar sesion"
+                />
+              </div>
+            </form>
+            <hr />
+            <div>
+              <button class="btn btn-info" id="google-btn">Google</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <!--Modallll Registro de sesion-->
     <div
       class="modal fade"
