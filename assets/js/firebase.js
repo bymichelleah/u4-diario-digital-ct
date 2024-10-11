@@ -36,10 +36,36 @@ export const auth = getAuth(app);
 //Inicializar Firebase
 export const db = getFirestore();
 
-//OPERACIONES CRUDDDDDDDDDDDD
-export const createTask = (title, description, userName, userImage) =>
-  addDoc(collection(db, "tasks"), { title, description, userName, userImage });
+// FUNCION PARA OBTENER FECHA Y HORA
+function obtenerFechaHora() {
+  const d = new Date();
+  const fecha = d.toLocaleDateString(); // Fecha en formato corto
+  const hora = d.toLocaleTimeString(); // Hora en formato corto
+  return { fecha, hora };
+}
 
+//OPERACIONES CRUDDDDDDDDDDDD
+export const createTask = (
+  title,
+  description,
+  userName,
+  userImage,
+  userEmail
+  //----
+) => {
+  //const { fecha, hora } = obtenerFechaHora(); // Obtener la fecha y la hora return;
+  addDoc(collection(db, "tasks"), {
+    title,
+    description,
+    userName,
+    userImage,
+    userEmail,
+    //hora,
+    //fecha,
+    //------
+  });
+};
+//---
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, "tasks"), callback);
 
