@@ -14,7 +14,7 @@ export const checkLogin = (user) => {
     //Mostramos el main container
     mainContainer.style.display = "block";
     saludo.textContent = `Bienvenid@ ${user.email}`;
-
+    saludo.classList.add("text-light");
     //Cargamos las tareas
     setupTasks(user);
   } else {

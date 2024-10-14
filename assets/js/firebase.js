@@ -1,7 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
 //Autenticación
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+import {
+  getAuth,
+  updateProfile, //11-10-24
+} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 //Firestore
 import {
   getFirestore,
@@ -36,21 +39,14 @@ export const auth = getAuth(app);
 //Inicializar Firebase
 export const db = getFirestore();
 
-// FUNCION PARA OBTENER FECHA Y HORA
-function obtenerFechaHora() {
-  const d = new Date();
-  const fecha = d.toLocaleDateString(); // Fecha en formato corto
-  const hora = d.toLocaleTimeString(); // Hora en formato corto
-  return { fecha, hora };
-}
-
 //OPERACIONES CRUDDDDDDDDDDDD
 export const createTask = (
   title,
   description,
   userName,
   userImage,
-  userEmail
+  userEmail,
+  timeData
   //----
 ) => {
   //const { fecha, hora } = obtenerFechaHora(); // Obtener la fecha y la hora return;
@@ -60,9 +56,7 @@ export const createTask = (
     userName,
     userImage,
     userEmail,
-    //hora,
-    //fecha,
-    //------
+    timeData,
   });
 };
 //---
@@ -79,3 +73,6 @@ export const updateTask = (id, newData) =>
 //delete
 //obtener una funcion para obtener
 export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+
+//Agregandooo 11-10-24
+export { updateProfile };

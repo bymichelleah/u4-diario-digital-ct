@@ -30,28 +30,27 @@ export const setupTasks = (user) => {
 
     //Crear una nueva tarea
     try {
+      const timeData = new Date().toLocaleString("es-PE", {
+        timeZone: "America/Lima",
+      });
       if (!editStatus) {
         //LA FECHA CONVERTIR EN STRING PARA PODER OBTENERLO Y MOSTRARLO
         //Crear tarea
-        //------------
-
-        //---------
         await createTask(
           title,
           description,
           user.displayName,
           user.photoURL,
-          user.email
+          user.email,
           //----
-
-          //----
+          timeData
         );
         //Mostrar mensaje de éxito
         showMessage("Tarea creada", "success");
         //Limpiar el formulario
       } else {
         //Actualizar tarea
-        await updateTask(editId, { title, description });
+        await updateTask(editId, { title, description, metaData });
         //Mostrar mensaje con éxito
         showMessage("Tarea actualizada", "success");
 
@@ -80,16 +79,14 @@ export const setupTasks = (user) => {
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       tasksHtml += `
-      <article class="task-container border border-2 rounded-2 p-3 my-3">
+      <article class=" caja task-container border border-2 rounded-2 p-3 my-3">
         <header class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center gap-3">
             <img class="task-profile-picture rounded-circle" src="${
-              data.userImage
+              data.userImage ? data.userImage : "./assets/img/profile.jpg"
             }" alt="${data.userName}" />
-            <p class="m-0">${data.userName}</p>
-<!--<small class="text-muted">${data.fecha} - ${data.hora}</small>
-          </div>
-            -->
+            <p class="m-0 text-light"><b>${data.userName}</b></p>
+            <p class="m-0 gap-5 text-light">Creado el: ${data.timeData}</p>
           </div>
           ${
             user.email === data.userEmail
@@ -101,8 +98,9 @@ export const setupTasks = (user) => {
           }
         </header>
         <hr />
-        <h4>${data.title}</h4>
-        <p>${data.description}</p>
+        <h4 class="text-light">${data.title}</h4>
+        <p class="text-light">${data.description}</p>
+        
       </article>
       `;
     });
