@@ -9,6 +9,6 @@ Proyecto de ejemplo +Chicas Tec - Bootcamp
 Este proyecto fue realizado constantemente es decir se aplico Bootstrap, Firebase y entre otras herramientas para concretar el Proyecto, como podemos ver hay 2 formularios para poder Iniciar Sesión y Registrarse basado en un CRUD(Create-Read-Update-Delete) y otras interacciones más, aqui una visualización previa del Proyecto C: .
 
 ### Vista Previa del Proyecto Diario Digital
-![Captura](./u4-diario-digital/assets/img/dg.png "diariodigital")
+![Captura](./assets/img/dg.png "diariodigital")
 
 ### Muchas gracias por ver ⭐
